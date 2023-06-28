@@ -10,11 +10,14 @@
 
 body {
   font-family: "Open Sans";
+  background-color: var(--light);
 }
 
 .navbar {
   display: flex;
   justify-content: space-evenly;
+  background-color: var(--dark-green);
+  color: var(--light);
 }
 
 .main {
