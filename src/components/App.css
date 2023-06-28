@@ -1,9 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
 :root {
   --brown: #31231E;
   --light: #D9E5D6;
   --light-green: #669D31;
   --orange: #BF6900;
   --dark-green: #3C5A14;
+}
+
+body {
+  font-family: "Open Sans";
 }
 
 .navbar {
@@ -57,6 +63,24 @@
   flex-direction: column;
   padding: 20px;
   margin: 40px;
+  background-color: var(--orange);
+  border-radius: 12px;
+}
+
+.item-detail img {
+  border-radius: 12px;
+  border: 6px solid var(--dark-green)
+}
+
+.x {
+  width: 30px;
+  font-size: 25px;
+  background: none;
+  border: none;
+}
+
+.item-detail-name {
+  text-transform: uppercase;
 }
 
 @keyframes App-logo-spin {
