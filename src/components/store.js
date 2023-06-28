@@ -1,6 +1,9 @@
-import togo from './../img/togo-sofa.png'
+import togo from './../img/togo-sofa.png';
 import burl from './../img/burl-cabinet.png';
-import lamp from './../img/serge-lamp.png'
+import lamp from './../img/serge-lamp.png';
+import orbital from './../img/orbital-green.png';
+import table from './../img/paolo-piva-table.png';
+
 
 const allItems = [
   {
@@ -20,6 +23,18 @@ const allItems = [
     src: lamp,
     description: 'actually, a lamp',
     price: '$9,025'
+  },
+  {
+    name: 'orbital',
+    src: orbital,
+    description: 'Mid mod light fixture',
+    price: '$7,039'
+  },
+  {
+    name: 'glass coffee table',
+    src: table,
+    description: 'The glass coffee table you have always wanted',
+    price: '$10,069'
   }
 ]
 
