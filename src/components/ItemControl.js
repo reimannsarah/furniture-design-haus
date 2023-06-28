@@ -1,27 +1,8 @@
 import React from "react";
 import Item from "./Item";
 import ItemList from "./ItemList";
+import allItems from "./store";
 
-const allItems = [
-  {
-    name: 'trundle',
-    src: './img/trundle',
-    description: 'a trundle',
-    price: '$5,099'
-  },
-  {
-    name: 'bag',
-    src: './img/bag',
-    description: 'a bag',
-    price: '$3,079'
-  },
-  {
-    name: 'toilet',
-    src: './img/toilet',
-    description: 'a toilet',
-    price: '$9,025'
-  }
-]
 
 class ItemControl extends React.Component {
 
@@ -67,30 +48,31 @@ class ItemControl extends React.Component {
 
   render() {
     let currentlyVisibleState = null;
-    let buttonText = null;
     let currentItem = allItems[this.state.visibleItemIndex]
     if (this.state.detailVisibleOnPage) {
-      currentlyVisibleState = <Item
-        name={currentItem.name}
-        src={currentItem.src}
-        description={currentItem.description}
-        price={currentItem.price}
-      />
-      buttonText = "X"
+      currentlyVisibleState = 
+      <div className="item-detail">
+        <button onClick={this.handleDetailClick}>X</button>
+        <Item
+          name={currentItem.name}
+          src={currentItem.src}
+          description={currentItem.description}
+          price={currentItem.price}
+        />
+      </div>
     } else {
       currentlyVisibleState =
-        <React.Fragment>
+        <div className='items'>
+          <button onClick={this.handlePrevItemClick}>&#10229;</button>
           <ItemList src={currentItem.src}
+            showMeDetails={this.handleDetailClick}
             name={currentItem.name} />
-          <button onClick={this.handleNextItemClick}>Next</button>
-          <button onClick={this.handlePrevItemClick}>Last</button>
-        </React.Fragment>
-      buttonText = "Zoinks!"
+          <button onClick={this.handleNextItemClick}>&#10230;</button>
+        </div>
     }
     return (
       <React.Fragment>
         {currentlyVisibleState}
-        <button onClick={this.handleDetailClick}>{buttonText}</button>
       </React.Fragment>
     )
   }
