@@ -1,13 +1,11 @@
 import React from "react";
-import { v4 } from 'uuid';
-import Item from "./Item";
 
 function ItemList(props) {
   return (
-    <React.Fragment>
-      <img src={props.src} alt="here ya go" />
+    <div>
+      <img src={props.src} alt="here ya go" onClick={props.showMeDetails}/>
       <p>{props.name}</p>
-    </React.Fragment>
+    </div>
   )
 }
 
