@@ -52,7 +52,7 @@ class ItemControl extends React.Component {
     if (this.state.detailVisibleOnPage) {
       currentlyVisibleState = 
       <div className="item-detail">
-        <button onClick={this.handleDetailClick}>X</button>
+        <button className="x" onClick={this.handleDetailClick}>&#10554;</button>
         <Item
           name={currentItem.name}
           src={currentItem.src}
