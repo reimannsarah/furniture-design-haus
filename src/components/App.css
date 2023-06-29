@@ -18,6 +18,16 @@ body {
   justify-content: space-evenly;
   background-color: var(--dark-green);
   color: var(--light);
+  /* margin: 30px;
+  width: 100%; */
+}
+
+.nav-btn {
+  background: none;
+  border: none;
+  font-family: "Open Sans";
+  font-size: 17px;
+  color: var(--light);
 }
 
 .main {
