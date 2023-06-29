@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Moirai+One&display=swap');
 
 :root {
   --brown: #31231E;
@@ -11,6 +12,18 @@
 body {
   font-family: "Open Sans";
   background-color: var(--light);
+
+}
+
+.header {
+  font-size: 60px;
+  font-family: "Moirai One";
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--brown);
+  background-color: var(--orange);
+  margin: 0;
+  padding-top: 20px;
 }
 
 .navbar {
@@ -18,8 +31,8 @@ body {
   justify-content: space-evenly;
   background-color: var(--dark-green);
   color: var(--light);
-  /* margin: 30px;
-  width: 100%; */
+  margin-bottom: 30px;
+  border-radius: 6px;
 }
 
 .nav-btn {
@@ -28,6 +41,11 @@ body {
   font-family: "Open Sans";
   font-size: 17px;
   color: var(--light);
+}
+
+.nav-btn:hover {
+  font-size: larger;
+  transition-duration: 0.4s;
 }
 
 .main {
@@ -56,10 +74,12 @@ body {
   border-radius: 6pc;
   font-size: 20px;
   background-color: var(--light);
+  transition-duration: 0.4s;
 }
 .items button:hover {
   background-color: var(--orange);
   color: var(--light);
+  transition-duration: 0.4s;
 }
 
 .items img {
@@ -69,6 +89,7 @@ body {
 
 .items img:hover {
   border: 6px solid var(--orange);
+  transition-duration: 0.4s;
 }
 
 .item-detail {
@@ -94,6 +115,32 @@ body {
 
 .item-detail-name {
   text-transform: uppercase;
+}
+
+.add-to-cart-btn {
+  width: 90px;
+  border: 1px solid white;
+  border-radius: 6px;
+  padding: 5px;
+  background-color: var(--orange);
+  color: white;
+}
+
+.add-to-cart-btn:hover {
+  background-color: white;
+  border: 1px solid var(--orange);
+  color: var(--orange);
+  transition-duration: 0.4s;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  font-size: x-small;
+  background-color: var(--dark-green);
+  color: var(--light);
+  width: 100vw;
+  text-align: center;
 }
 
 @keyframes App-logo-spin {
