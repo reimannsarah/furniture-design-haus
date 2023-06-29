@@ -16,7 +16,7 @@ An app for a fake furniture design house that allows the user to scroll through 
 * _Javascript_
 
 ## Component Diagram
-![photo of app design](./src/img/component-diagram.png)
+![photo of app design](./src/img/punch-scrunch.png)
 
 ## Setup Instructions
 1. Clone this repo to your desktop
