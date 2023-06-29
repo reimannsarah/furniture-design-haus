@@ -25,7 +25,7 @@ An app for a fake furniture design house that allows the user to scroll through 
 4. Run ```npm start``` in the project's root directory to start the app 
 
 ## Known Bugs 
-* None
+* _Cannot add quantity or multiple items of the same type to cart__
 
 # License
 
