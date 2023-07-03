@@ -11,6 +11,23 @@ describe('itemListReducer', () => {
     id: 1
   }
 
+  const currentState = {
+    1: {
+      name: 'scorcher',
+      src: 'picture',
+      description: 'a hot bench',
+      price: '$456',
+      id: 1
+    },
+    2: {
+      name: 'boinger',
+      src: 'picture',
+      description: 'bouncy chair',
+      price: '$543',
+      id: 2
+    }
+  }
+
   test('Should return default state if there is no action type passed into the reducer', () => {
     expect(itemListReducer({}, { type: null })).toEqual({});
   });
@@ -35,4 +52,20 @@ describe('itemListReducer', () => {
       }
     });
   });
+
+  test('Should successfully delete an item', () => {
+    action = {
+      type: 'DELETE_ITEM',
+      id: 1
+    };
+    expect(itemListReducer(currentState, action)).toEqual({
+      2: {
+        name: 'boinger',
+        src: 'picture',
+        description: 'bouncy chair',
+        price: '$543',
+        id: 2
+      }
+    })
+  })
 });
