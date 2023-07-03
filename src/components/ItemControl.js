@@ -5,6 +5,8 @@ import ItemList from "./ItemList";
 import Cart from "./Cart";
 import allItems from "./store";
 import { v4 } from "uuid";
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 
 class ItemControl extends React.Component {
@@ -13,37 +15,52 @@ class ItemControl extends React.Component {
     super(props);
     this.state = {
       detailVisibleOnPage: false,
-      cart: [],
       visibleItemIndex: 0,
       cartVisibleOnPage: false,
     };
   }
 
-  handleAddingToCart = (item) => { 
+  handleAddingToCart = (item) => {
     item.id = v4();
-    const newCartItem = this.state.cart.concat(item);
-    this.setState({ cart: newCartItem,
-                  cartVisibleOnPage: true,
-                  detailVisibleOnPage: false
-                });
+    const { dispatch } = this.props;
+    const { id, name, src, description, price } = item;
+    const action = {
+      type: 'ADD_ITEM',
+      id: id,
+      name: name,
+      src: src,
+      description: description,
+      price: price
     }
+    dispatch(action);
+    this.setState({
+      cartVisibleOnPage: true,
+      detailVisibleOnPage: false
+    });
+  }
 
   handleCartClick = () => {
-      this.setState({cartVisibleOnPage: true});
-    }
-  
+    this.setState({ cartVisibleOnPage: true });
+  }
+
   handleDeleteFromCart = (id) => {
-    const newCart = this.state.cart.filter(item => item.id !== id)
-    this.setState({cart: newCart});
+    const { dispatch } = this.props;
+    const action = {
+      type: 'DELETE_ITEM',
+      id: id
+    }
+    dispatch(action);
   }
 
   handleDetailClick = () => {
-    this.setState({detailVisibleOnPage: true});
+    this.setState({ detailVisibleOnPage: true });
   }
 
   handleReturnClick = () => {
-    this.setState({detailVisibleOnPage: false,
-                  cartVisibleOnPage: false})
+    this.setState({
+      detailVisibleOnPage: false,
+      cartVisibleOnPage: false
+    })
   }
 
   handleNextItemClick = () => {
@@ -69,27 +86,27 @@ class ItemControl extends React.Component {
   render() {
     let currentlyVisibleState = null;
     let currentItem = allItems[this.state.visibleItemIndex]
-    
+
     if (this.state.cartVisibleOnPage) {
-      currentlyVisibleState = 
-      <React.Fragment>
-        <Cart 
-          cart={this.state.cart} 
-          deleteItem={this.handleDeleteFromCart} 
-        />
-      </React.Fragment>
+      currentlyVisibleState =
+        <React.Fragment>
+          <Cart
+            cart={this.props.cart}
+            deleteItem={this.handleDeleteFromCart}
+          />
+        </React.Fragment>
     } else if (this.state.detailVisibleOnPage) {
-      currentlyVisibleState = 
-      <div className="item-detail">
-        <button className="x" onClick={this.handleReturnClick}>&#10554;</button>
-        <Item
-          name={currentItem.name}
-          src={currentItem.src}
-          description={currentItem.description}
-          price={currentItem.price}
-        />
-        <button className="add-to-cart-btn" onClick={() => {this.handleAddingToCart(currentItem)}}>Add to Cart</button>
-      </div>
+      currentlyVisibleState =
+        <div className="item-detail">
+          <button className="x" onClick={this.handleReturnClick}>&#10554;</button>
+          <Item
+            name={currentItem.name}
+            src={currentItem.src}
+            description={currentItem.description}
+            price={currentItem.price}
+          />
+          <button className="add-to-cart-btn" onClick={() => { this.handleAddingToCart(currentItem) }}>Add to Cart</button>
+        </div>
     } else {
       currentlyVisibleState =
         <div className='items'>
@@ -108,5 +125,17 @@ class ItemControl extends React.Component {
     )
   }
 }
+
+ItemControl.propTypes = {
+  cart: PropTypes.object
+};
+
+const mapStateToProps = state => {
+  return {
+    cart: state
+  }
+}
+
+ItemControl = connect(mapStateToProps)(ItemControl);
 
 export default ItemControl;
