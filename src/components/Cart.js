@@ -7,7 +7,7 @@ function Cart(props) {
       if (props.cart.length === 0){
        currentlyVisibleState =  <p>Your cart is empty, sire</p>
       } else {
-      currentlyVisibleState= props.cart.map(item => 
+      currentlyVisibleState = Object.values(props.cart).map(item => 
       <div key={item.id}>
         <p>{item.name}</p>
         <p>{item.description}</p>
@@ -25,7 +25,7 @@ function Cart(props) {
 }
 
 Cart.propTypes = {
-  cart: PropTypes.array
+  cart: PropTypes.object
 }
 
 export default Cart;
